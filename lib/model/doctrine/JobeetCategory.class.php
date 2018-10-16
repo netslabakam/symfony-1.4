@@ -7,21 +7,30 @@
  * 
  * @package    jobeet
  * @subpackage model
- * @author     Farrukh Umurzakov
- * @version    SVN: $Id: Builder.php 7691 2011-02-04 15:43:29Z jwage $
+ * @author     Your name here
+ * @version    SVN: $Id: Builder.php 6820 2009-11-30 17:27:49Z jwage $
  */
 class JobeetCategory extends BaseJobeetCategory
 {
-    public function countActiveJobs()
-    {
-        $q = Doctrine_Query::create()
-            ->from('JobeetJob j')
-            ->where('j.category_id = ?', $this->getId());
+  public function countActiveJobs()
+  {
+    return $this->getActiveJobsQuery()->count();
+  }
 
-        return Doctrine_Core::getTable('JobeetJob')->countActiveJobs($q);
-    }
-    public function getSlug()
-    {
-        return Jobeet::slugify($this->getName());
-    }
+  public function getActiveJobs($max = 10)
+  {
+    $q = $this->getActiveJobsQuery()
+        ->limit($max);
+    
+    return $q->execute();
+  }
+
+  public function getActiveJobsQuery()
+  {
+    $q = Doctrine_Query::create()
+        ->from('JobeetJob j')
+        ->where('j.category_id = ?', $this->getId());
+    
+    return Doctrine::getTable('JobeetJob')->addActiveJobsQuery($q);
+  }
 }

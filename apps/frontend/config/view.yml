@@ -14,7 +14,7 @@ default:
 
   stylesheets:    [style.css]
 
-  javascripts:    [jquerry-1.10.2.min.js, search.js]
+  javascripts:    []
 
   has_layout:     true
   layout:         layout

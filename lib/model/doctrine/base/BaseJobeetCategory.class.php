@@ -21,8 +21,8 @@
  * 
  * @package    jobeet
  * @subpackage model
- * @author     Farrukh Umurzakov
- * @version    SVN: $Id: Builder.php 7691 2011-02-04 15:43:29Z jwage $
+ * @author     Your name here
+ * @version    SVN: $Id: Builder.php 6820 2009-11-30 17:27:49Z jwage $
  */
 abstract class BaseJobeetCategory extends sfDoctrineRecord
 {
@@ -54,6 +54,13 @@ abstract class BaseJobeetCategory extends sfDoctrineRecord
              'foreign' => 'category_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
+        $sluggable0 = new Doctrine_Template_Sluggable(array(
+             'fields' => 
+             array(
+              0 => 'name',
+             ),
+             ));
         $this->actAs($timestampable0);
+        $this->actAs($sluggable0);
     }
 }

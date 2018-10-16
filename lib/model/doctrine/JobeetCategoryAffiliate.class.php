@@ -7,8 +7,8 @@
  * 
  * @package    jobeet
  * @subpackage model
- * @author     Farrukh Umurzakov
- * @version    SVN: $Id: Builder.php 7691 2011-02-04 15:43:29Z jwage $
+ * @author     Your name here
+ * @version    SVN: $Id: Builder.php 6820 2009-11-30 17:27:49Z jwage $
  */
 class JobeetCategoryAffiliate extends BaseJobeetCategoryAffiliate
 {

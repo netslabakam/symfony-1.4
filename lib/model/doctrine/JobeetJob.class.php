@@ -7,35 +7,35 @@
  * 
  * @package    jobeet
  * @subpackage model
- * @author     Farrukh Umurzakov
- * @version    SVN: $Id: Builder.php 7691 2011-02-04 15:43:29Z jwage $
+ * @author     Your name here
+ * @version    SVN: $Id: Builder.php 6820 2009-11-30 17:27:49Z jwage $
  */
 class JobeetJob extends BaseJobeetJob
 {
-    public function save(Doctrine_Connection $conn = null)
+  public function save(Doctrine_Connection $conn = null)
+  {
+    if ($this->isNew() && !$this->getExpiresAt())
     {
-        if ($this->isNew() && !$this->getExpiresAt())
-        {
-            $now = $this->getCreatedAt() ? $this->getDateTimeObject('created_at')->format('U') : time();
-            $this->setExpiresAt(date('Y-m-d h:i:s', $now + 86400 * sfConfig::get('app_active_days')));
-        }
-
-        return parent::save($conn);
+      $now = $this->getCreatedAt() ?
+          $this->getDateTimeObject('created_at')->format('U') : time();
+      $this->setExpiresAt(date('Y-m-d H:i:s', $now + 86400 * sfConfig::get('app_active_days')));
     }
 
-    public function getCompanySlug()
-    {
-        return Jobeet::slugify($this->getCompany());
-    }
+    return parent::save($conn);
+  }
 
-    public function getPositionSlug()
-    {
-        return Jobeet::slugify($this->getPosition());
-    }
-
-    public function getLocationSlug()
-    {
-        return Jobeet::slugify($this->getLocation());
-    }
-
+  public function getCompanySlug()
+  {
+    return Jobeet::slugify($this->getCompany());
+  }
+  
+  public function getPositionSlug()
+  {
+    return Jobeet::slugify($this->getPosition());
+  }
+  
+  public function getLocationSlug()
+  {
+    return Jobeet::slugify($this->getLocation());
+  }
 }
