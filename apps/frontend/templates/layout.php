@@ -19,7 +19,7 @@
             <div class="post">
               <h2>Ask for people</h2>
               <div>
-                <a href="<?php echo url_for('job/index') ?>">Post a Job</a>
+                  <a href="<?php echo url_for('@job_new') ?>">Post a Job</a>
               </div>
             </div>
             
@@ -38,24 +38,31 @@
       </div>
       
       <div id="content">
-        <?php if ($sf_user->hasFlash('notice')): ?>
-          <div class="flash_notice">
-            <?php echo $sf_user->getFlash('notice') ?>
+          <?php if ($sf_user->hasFlash('notice')): ?>
+              <div class="flash_notice"><?php echo $sf_user->getFlash('notice') ?></div>
+          <?php endif; ?>
+
+          <?php if ($sf_user->hasFlash('error')): ?>
+              <div class="flash_error"><?php echo $sf_user->getFlash('error') ?></div>
+          <?php endif; ?>
+
+          <div id="job_history">
+              Recent viewed jobs:
+              <ul>
+                  <?php foreach ($sf_user->getJobHistory() as $job): ?>
+                      <li>
+                          <?php echo link_to($job->getPosition().' - '.$job->getCompany(), 'job_show_user', $job) ?>
+                      </li>
+                  <?php endforeach ?>
+              </ul>
           </div>
-        <?php endif; ?>
-        
-        <?php if ($sf_user->hasFlash('error')): ?>
-          <div class="flash_error">
-            <?php echo $sf_user->getFlash('error') ?>
-          </div>
-        <?php endif; ?>
-        
+
         <div class="content">
           <?php echo $sf_content ?>
         </div>
-      </div>
-      
-      <div id="footer">
+    </div>
+
+    <div id="footer">
         <div class="content">
           <span class="symfony">
             <img src="http://www.symfony-project.org/images/jobeet-mini.png" />

@@ -7,7 +7,7 @@
  *
  * @package    jobeet
  * @subpackage form
- * @author     Your name here
+ * @author     Farrukh Umurzakov
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 24171 2009-11-19 16:37:50Z Kris.Wallsmith $
  */
 abstract class BaseJobeetJobForm extends BaseFormDoctrine

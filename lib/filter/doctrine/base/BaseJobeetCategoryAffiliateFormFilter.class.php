@@ -5,7 +5,7 @@
  *
  * @package    jobeet
  * @subpackage filter
- * @author     Your name here
+ * @author     Farrukh Umurzakov
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 24171 2009-11-19 16:37:50Z Kris.Wallsmith $
  */
 abstract class BaseJobeetCategoryAffiliateFormFilter extends BaseFormFilterDoctrine

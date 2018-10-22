@@ -6,5 +6,5 @@ all:
     class: sfDoctrineDatabase
     param:
       dsn:      mysql:host=localhost;dbname=jobeet
-      username: siroj
-      password: siroj
+      username: root
+      password:
